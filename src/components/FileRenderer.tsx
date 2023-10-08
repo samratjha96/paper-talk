@@ -73,7 +73,8 @@ const FileRenderer = ({ url }: FileRendererProps) => {
           <Button
             disabled={currPage <= 1}
             onClick={() => {
-              setCurrPage((prev) => (prev - 1 > 1 ? prev - 1 : 1));
+              setCurrPage((prev) => (prev - 1 > 1 ? prev - 1 : 1))
+              setValue("page", String(currPage - 1))
             }}
             variant="ghost"
             aria-aria-label="previous page"
@@ -107,6 +108,7 @@ const FileRenderer = ({ url }: FileRendererProps) => {
               setCurrPage((prev) =>
                 prev + 1 > numPages! ? numPages! : prev + 1
               );
+              setValue("page", String(currPage + 1))
             }}
             variant="ghost"
             aria-aria-label="next page"
