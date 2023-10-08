@@ -80,7 +80,7 @@ const FileRenderer = ({ url }: FileRendererProps) => {
               setValue("page", String(currPage - 1));
             }}
             variant="ghost"
-            aria-aria-label="previous page"
+            aria-label="previous page"
           >
             <ChevronDown className="h-4 w-4" />
           </Button>
@@ -114,7 +114,7 @@ const FileRenderer = ({ url }: FileRendererProps) => {
               setValue("page", String(currPage + 1));
             }}
             variant="ghost"
-            aria-aria-label="next page"
+            aria-label="next page"
           >
             <ChevronUp className="h-4 w-4" />
           </Button>
