@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import { RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default function Home() {
   return (
@@ -21,17 +22,14 @@ export default function Home() {
           PaperTalk allows you to have conversations with any document. Simply
           upload your file and start asking questions right away.
         </p>
-
-        <Link
+        <RegisterLink
           className={buttonVariants({
             size: "lg",
             className: "mt-5",
           })}
-          href="/dashboard"
-          target="_blank"
         >
           Get started <ArrowRight className="ml-2 h-5 w-5" />
-        </Link>
+        </RegisterLink>
       </MaxWidthWrapper>
 
       {/* Value proposition section */}
@@ -103,7 +101,7 @@ export default function Home() {
                 Sign up for an account
               </span>
               <span className="mt-2 text-zinc-700">
-                Either starting out with a free plan or choose our {' '}
+                Either starting out with a free plan or choose our{" "}
                 <Link
                   href="/pricing"
                   className="text-blue-700 underline underline-offset-2"
