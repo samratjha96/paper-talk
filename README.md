@@ -1,5 +1,8 @@
 Project is hosted by Vercel at https://paper-talk.vercel.app/
 
+## Authentication
+Authentication for this project is done via [Kinde](https://kinde.com/)
+
 ## Getting Started
 
 First, run the development server:
