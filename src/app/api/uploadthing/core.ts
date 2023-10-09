@@ -5,7 +5,7 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf"
 import { OpenAIEmbeddings } from "langchain/embeddings/openai"
 import { PineconeStore } from "langchain/vectorstores/pinecone"
-import { pinecone } from "@/lib/pinecone";
+import { getPineconeClient } from "@/lib/pinecone";
  
 const f = createUploadthing();
  
@@ -49,14 +49,15 @@ export const ourFileRouter = {
         const pagesAmt = pageLevelDocs.length
 
         // Vectorize and index the entire document
-
-        const pineconeIndex = pinecone.Index("papertalk")
+        const pinecone = await getPineconeClient()
+        const pineconeIndex = pinecone.Index("pdf-chatbot")
 
         const embeddings = new OpenAIEmbeddings({
           openAIApiKey: process.env.OPENAI_API_KEY
         })
 
         await PineconeStore.fromDocuments(pageLevelDocs, embeddings, {
+          //@ts-ignore
           pineconeIndex,
           namespace: createdFile.id
         })
@@ -70,6 +71,8 @@ export const ourFileRouter = {
           }
         })
       } catch(err) {
+        console.error("Encountered error indexing", err)
+
         await db.file.update({
           data: {
             uploadStatus: "FAILED"

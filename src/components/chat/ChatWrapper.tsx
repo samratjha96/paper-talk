@@ -77,6 +77,7 @@ const ChatWrapper = ({ fileId }: ChatWrapperProps) => {
               })}
             >
               <ChevronLeft className="h-3 w-3 mr-1.5" />
+              Go back
             </Link>
           </div>
         </div>
