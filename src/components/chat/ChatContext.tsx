@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "../ui/use-toast";
 import { useMutation } from "@tanstack/react-query";
 
 type StreamResponse = {

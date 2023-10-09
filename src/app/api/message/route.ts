@@ -51,7 +51,7 @@ export const POST = async (req: NextRequest) => {
 
     const vectorstore = await PineconeStore.fromExistingIndex(embeddings, { pineconeIndex, namespace: file.id})
     
-    const results = await vectorstore.similaritySearch(message, 4)
+    const results = await vectorstore.similaritySearch(message, 2)
 
     const prevMessages = await db.message.findMany({
       where: {
